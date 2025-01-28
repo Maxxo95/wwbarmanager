@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cocktails List</title>
+    <link rel="stylesheet" href="listcocktails.css">
+</head>
+<body>
+    <div>
+        <div id="topStable">
+            <img class="logo" src="wwlogo.png" alt="logo">
+            <h1>Woodfire & Wings Cocktails</h1>
+            <div class="dropdown">
+                <div class="cover">
+                    <p class="covername">Menu</p>
+                    <div class="caret"></div>
+                </div>
+                <div class="menu">
+                    <button class="button" onclick="togglePopup1()">Log In</button>
+                    <div id="popup">
+                        <div id="popup-content">
+                            <div class="xbutt">
+                                <button class="xbutt" onclick="togglePopup()">X</button>
+                            </div>
+                            <h2>For support contact</h2>
+                            <p>manager@brewery.com</p>
+                            <p>technicalsupport@cctwebdevelop</p>
+                            <p>083 312 46 66</p>
+                        </div>
+                    </div>
+                    <div id="loginpop">
+                        <div id="login-pop-content">
+                            <div class="xbutt">
+                                <button class="xbutt" onclick="togglePopup1()">X</button>
+                            </div>
+                            <div class="login-top">
+                                <h2>Login</h2>
+                            </div>
+                            <div class="login-body">
+                                <form id="loginForm">
+                                    <input type="text" id="username" placeholder="Username" required>
+                                    <input type="password" id="password" placeholder="Password" required>
+                                    <button type="submit">LogIn</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="button" onclick="togglePopup()">Support</button>
+                    <button class="button">Trainer</button>
+                </div>
+            </div>
+        </div>
+        <div id="introd">
+            
+        </div>
+        <div id="content"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="listcocktails.js"></script>
+</body>
+</html>
