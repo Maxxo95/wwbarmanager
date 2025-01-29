@@ -1,45 +1,101 @@
 // Path to your CSV file
-const csvFilePath = "modified_cocktail_recipes.csv";  // Ensure this is correct
-const recipeContainer = document.getElementById('content');
+const csvFilePath = "modified_cocktail_recipes.csv"; // Ensure this is correct
+const recipeContainer = document.getElementById("content");
+
+// Declare cocktailsMenu at a higher scope so it can be accessed globally
+let cocktailsMenu = [];
 
 // Fetch and parse CSV using PapaParse
 fetch(csvFilePath)
-  .then(response => response.text()) // Get CSV as text
-  .then(text => {
+  .then((response) => response.text()) // Get CSV as text
+  .then((text) => {
     // Use PapaParse to parse the CSV text
     Papa.parse(text, {
-      header: true,          // Parse first row as column headers
-      skipEmptyLines: true,  // Skip empty lines in the CSV
-      complete: function(results) {
-        console.log(results.data); // Check the data structure loaded from CSV
-        populateCocktails(results.data); // Pass the parsed data to the function
-      }
+      header: true, // Parse first row as column headers
+      skipEmptyLines: true, // Skip empty lines in the CSV
+      complete: function (results) {
+        cocktailsMenu = results.data; // Assign the parsed data to the global variable
+        console.log(cocktailsMenu); // Check the data structure loaded from CSV
+        populateCocktails(cocktailsMenu); // Pass the parsed data to the function
+      },
     });
   })
-  .catch(error => console.error("Error loading the CSV file:", error));
+  .catch((error) => console.error("Error loading the CSV file:", error));
 
 // Function to populate the cocktails list on the main page
-function populateCocktails(cocktailsMenu) {
-  // Loop through each row of data in the CSV (cocktailsMenu is the parsed data)
-  for (let i = 0; i < cocktailsMenu.length; i++) {
-    let cocktail = cocktailsMenu[i]; // Each cocktail object
-    
+function populateCocktails(cocktails) {
+  // Clear the existing content before populating
+  recipeContainer.innerHTML = "";
+
+  // Loop through each row of data in the CSV (cocktails is the parsed data)
+  for (let i = 0; i < cocktails.length; i++) {
+    let cocktail = cocktails[i]; // Each cocktail object
+
     // Access the first column (cocktail name or first value in the row)
-    let cocktailName = Object.values(cocktail)[0];  // Access the first value in the object
-    
+    let cocktailName = Object.values(cocktail)[0]; // Access the first value in the object
+
     // Create the HTML content dynamically
     let html = `
       <div class="cocktails" id='${i}'>
         <div class='drinkConta'>       
           <a href="drinks.html?listcocktails=${i}" target="_blank">${cocktailName}</a>
-        
         </div>
-          <div class="drinkImg"> <img class="logo" src="images/${cocktailName}.jpg" alt="logo">
-          </div>
+        <div class="drinkImg">
+          <img class="logo" src="images/${cocktailName}.jpg" alt="logo">
+        </div>
       </div>
     `;
-    
+
     // Add the generated HTML to the container
     recipeContainer.innerHTML += html;
   }
 }
+
+// Function to filter cocktails based on the search query
+function filterCocktails(query) {
+  // Filter the cocktails based on the query (case-insensitive)
+  const filteredCocktails = cocktailsMenu
+    .map((cocktail, index) => ({ ...cocktail, originalIndex: index })) // Add original index
+    .filter((cocktail) => {
+      const cocktailName = Object.values(cocktail)[0]; // Get cocktail name
+      return cocktailName.toLowerCase().includes(query.toLowerCase());
+    });
+
+  // Clear the existing content before populating with filtered results
+  recipeContainer.innerHTML = "";
+
+  // Populate the filtered results
+  for (const cocktail of filteredCocktails) {
+    const cocktailName = Object.values(cocktail)[0]; // Cocktail name
+    const originalIndex = cocktail.originalIndex; // Get the original index
+
+    // Create the HTML content dynamically
+    let html = `
+      <div class="cocktails" id='${originalIndex}'>
+        <div class='drinkConta'>       
+          <a href="drinks.html?listcocktails=${originalIndex}" target="_blank">${cocktailName}</a>
+        </div>
+        <div class="drinkImg">
+          <img class="logo" src="images/${cocktailName}.jpg" alt="logo">
+        </div>
+      </div>
+    `;
+
+    // Add the generated HTML to the container
+    recipeContainer.innerHTML += html;
+  }
+}
+
+// Event listener for the search bar (on input)
+const searchBar = document.getElementById("searchBar");
+searchBar.addEventListener("input", (event) => {
+  const query = event.target.value; // Get the user's input
+  filterCocktails(query); // Filter and update the cocktails list
+});
+
+// Event listener for the search button
+const searchButton = document.getElementById("searchButton");
+searchButton.addEventListener("click", () => {
+  const query = document.getElementById("searchBar").value; // Get the user's input
+  filterCocktails(query); // Filter and update the cocktails list
+});
