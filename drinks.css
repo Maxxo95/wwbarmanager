@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f8f8;
+    background-color: #09010182;
     color: #333;
 }
 
@@ -18,7 +18,7 @@ p {
 
 /* Cocktail Container */
 .cocktail-container {
-    max-width: 800px;
+    max-width: 1600px;
     margin: 30px auto;
     background-color: #ffffff;
     padding: 20px;
@@ -87,4 +87,53 @@ p {
 .detail-box h3 {
     font-size: 20px;
     margin-bottom: 8px;
+}
+.top-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* Image Section */
+.image-section {
+    flex: 1 1 30%;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-section p {
+    font-size: 14px;
+    color: #aaa;
+}
+
+/* Bottom Layout */
+.bottom-layout {
+    margin-top: 20px;
+}
+
+.instructions {
+    background-color: #fdfdfd;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.instructions p {
+    margin-bottom: 15px;
+}
+
+.video-placeholder {
+    background-color: #f9f9f9;
+    padding: 15px;
+    text-align: center;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
 }

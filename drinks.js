@@ -35,32 +35,51 @@ function renderCocktail(cocktail) {
         .join("");
 
     // Generate the HTML layout for the cocktail
+
+  
+
     const drinkHTML = `
         <div class="cocktail-container">
             <!-- Cocktail Name -->
             <h1 class="cocktail-title">${cocktail["CocktailName"]}</h1>
 
-            <!-- Layout for ingredients and other details -->
-            <div class="cocktail-layout">
-                <!-- Ingredients Section -->
-                <div class="ingredients-section">
-                    <h2>Ingredients</h2>
-                    <ul>${ingredientsList}</ul>
+            <!-- Top Layout -->
+            <div class="top-layout">
+                <!-- Image Section -->
+                <div class="image-section">
+                     <img class="logo" src="${cocktail["CocktailName"]}.jpg" alt="logo">
                 </div>
 
-                <!-- Other Details Section -->
+                <!-- Details Section -->
                 <div class="details-section">
-                    <div class="detail-box">
-                        <h3>Glass Type</h3>
-                        <p>${cocktail["GlassType"]}</p>
+                    <div class="ingredients-section">
+                        <h2>Ingredients</h2>
+                        <ul>${ingredientsList}</ul>
                     </div>
-                    <div class="detail-box">
-                        <h3>Type of Ice</h3>
-                        <p>${cocktail["Ice"]}</p>
+                    <div class="extra-details">
+                        <div class="detail-box">
+                            <h3>Glass Type</h3>
+                            <p>${cocktail["GlassType"]}</p>
+                        </div>
+                        <div class="detail-box">
+                            <h3>Type of Ice</h3>
+                            <p>${cocktail["Ice"]}</p>
+                        </div>
+                        <div class="detail-box">
+                            <h3>Garnish</h3>
+                            <p>${cocktail["Garnish"]}</p>
+                        </div>
                     </div>
-                    <div class="detail-box">
-                        <h3>Garnish</h3>
-                        <p>${cocktail["Garnish"]}</p>
+                </div>
+            </div>
+
+            <!-- Bottom Layout -->
+            <div class="bottom-layout">
+                <h2>Preparation Instructions</h2>
+                <div class="instructions">
+                    <p>${cocktail["Instructions"] || "Instructions will be added here."}</p>
+                    <div class="video-placeholder">
+                        <p>Video Placeholder</p>
                     </div>
                 </div>
             </div>

@@ -32,8 +32,10 @@ function populateCocktails(cocktailsMenu) {
       <div class="cocktails" id='${i}'>
         <div class='drinkConta'>       
           <a href="drinks.html?listcocktails=${i}" target="_blank">${cocktailName}</a>
-          <a id='rebel2' href="training.html?listcocktails=${i}" target="_blank">Trainer</a>
+        
         </div>
+          <div class="drinkImg"> <img class="logo" src="${cocktailName}.jpg" alt="logo">
+          </div>
       </div>
     `;
     
