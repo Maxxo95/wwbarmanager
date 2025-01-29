@@ -34,7 +34,7 @@ function populateCocktails(cocktailsMenu) {
           <a href="drinks.html?listcocktails=${i}" target="_blank">${cocktailName}</a>
         
         </div>
-          <div class="drinkImg"> <img class="logo" src="${cocktailName}.jpg" alt="logo">
+          <div class="drinkImg"> <img class="logo" src="images/${cocktailName}.jpg" alt="logo">
           </div>
       </div>
     `;

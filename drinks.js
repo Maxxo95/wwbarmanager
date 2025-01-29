@@ -37,7 +37,15 @@ function renderCocktail(cocktail) {
     // Generate the HTML layout for the cocktail
 
   
+    const videoBasePath = "/";
 
+    // Build the video file names dynamically
+    const glassVideo = `${videoBasePath}${cocktail["GlassType"]}.mp4`;
+    const iceVideo = `${videoBasePath}${cocktail["Ice"]}.mp4`;
+    const garnishVideo = `${videoBasePath}${cocktail["Garnish"]}.mp4`;
+    const techniqueVideo = `${videoBasePath}${cocktail["CocktailName"]}.mp4`;
+
+    // Constructing the HTML dynamically
     const drinkHTML = `
         <div class="cocktail-container">
             <!-- Cocktail Name -->
@@ -47,7 +55,7 @@ function renderCocktail(cocktail) {
             <div class="top-layout">
                 <!-- Image Section -->
                 <div class="image-section">
-                     <img class="logo" src="${cocktail["CocktailName"]}.jpg" alt="logo">
+                     <img class="logo" src="images/${cocktail["CocktailName"]}.jpg" alt="${cocktail["CocktailName"]}">
                 </div>
 
                 <!-- Details Section -->
@@ -76,10 +84,35 @@ function renderCocktail(cocktail) {
             <!-- Bottom Layout -->
             <div class="bottom-layout">
                 <h2>Preparation Instructions</h2>
-                <div class="instructions">
-                    <p>${cocktail["Instructions"] || "Instructions will be added here."}</p>
-                    <div class="video-placeholder">
-                        <p>Video Placeholder</p>
+                <div class="video-section">
+                    <div class="video-container">
+                        <h3>Glass</h3>
+                        <video controls>
+                            <source src="video/${glassVideo}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="video-container">
+                        <h3>Ice Type</h3>
+                        <video controls>
+                            <source src="video/${iceVideo}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="video-container">
+                        <h3>Technique</h3>
+                        <video controls>
+                             <source src="video/${techniqueVideo}" type="video/mp4">
+                           
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="video-container">
+                        <h3>Garnish</h3>
+                        <video controls>
+                             <source src="video/${garnishVideo}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
                 </div>
             </div>
