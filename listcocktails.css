@@ -1,141 +1,113 @@
 /* General Background */
-html {
-    background-color: rgba(206, 133, 50, 0.5);
-}
-
-body {
-    margin: 0;
-}
+/* Updated CSS for the top part */
 #topStable {
-	position: sticky;
-	top: 0px;
-	z-index: 1;
-	display: flex;
-	justify-content: space-between;
-	margin: 0px;
-	padding: 0px;
-	width: 100%;
-	height: 100px;
-	background-color: rgb(3, 8, 16, .9);
-	color: rgb(231, 247, 253, .8);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1a1a1a; /* Dark background for modern look */
+    padding: 15px 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
-/*  HERE STARTS THE INSIDE BUTTONS CSS (SIGN IN< SUPPORT)*/
+
+#topStable .logo {
+    width: 70px;
+    height: 70px;
+    border-radius: 70%;
+    object-fit: cover;
+}
+
+#topStable h1 {
+    font-size: 1.8rem;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
 .dropdown {
-	margin-top: 30px;
-	width: 220px;
-	height: 130px;
-	background-color: rgb(206, 133, 50, .0);
-	border: none;
+    position: relative;
 }
 
-.cover {
-	background-color: rgb(206, 133, 50, .9);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: 5px;
-	height: 40px;
-	cursor: pointer;
+.dropdown .cover {
+    display: flex;
+    align-items: center;
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.cover-clicked {
-	border: 2px;
+.dropdown .cover:hover {
+    background-color: #c0392b;
+}
+
+.dropdown .covername {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.dropdown .caret {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #fff;
 }
 
 .menu {
-	height: 90px;
-	flex-flow: column wrap;
-	width: 240px;
-	
-	opacity: 0;
-	display: none;
-	transition: 0.2s;
-	z-index: 1;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    display: none; /* Initially hidden */
+    flex-direction: column;
+    padding: 10px 0;
+    min-width: 150px;
+    z-index: 10;
 }
 
-.menu-open {
-	display: block;
-	opacity: 1;
+.dropdown:hover .menu {
+    display: flex; /* Show menu on hover */
 }
 
-.cover:hover {
-	background-color: rgb(206, 133, 50, .3);
+.menu .button {
+    background: none;
+    color: #fff;
+    padding: 10px 15px;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
 }
 
-.button:hover {
-	background-color: rgb(206, 133, 50, .8);
-}
-
-.dropdown {
-	margin-top: 30px;
-	width: 220px;
-	height: 130px;
-	background-color: rgb(206, 133, 50, .0);
-	border: none;
-}
-
-.logo {
-	position: center;
-	width: 50px;
-	height: 50px;
-	margin: 25px;
-}
-
-.button {
-	background-color: rgb(128,42,0);
-	border-radius: 5px;
-	width: 220px;
-	height: 30px;
-	margin: 0px;
-}
-
-.caret {
-	width: 0;
-	height: 0;
-	border-left: 5px solid transparent;
-	border-right: 5px solid transparent;
-	border-top: 6px solid black;
-	transition: 0.3s;
-}
-
-.caret-rotate {
-	transform: rotate(180deg);
+.menu .button:hover {
+    background-color: #444;
 }
 
 #popup, #loginpop {
-	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
-}
-
-/* Styling for the popup content */
-#popup-content, #login-pop-content {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	background-color: rgb(122,43,0); /* white */
-	padding: 35px;
-	border-radius: 20px;
-	color: rgb(23,8,0);
+    display: none; /* Keep popups hidden until triggered */
 }
 
 .xbutt {
-	display: flex;
-	align-items: flex-end;
-	justify-content: end;
-	margin: 0px;
-	padding: 0;
-	border: none;
-	background: none;
+    text-align: right;
 }
 
-#pass {
-	color: white;
+.xbutt button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #e74c3c;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.xbutt button:hover {
+    color: #c0392b;
 }
 
 /*UNTIL HERE ALL THIS IS CSS FOR BUTTOS INSIDE COVERNAME MENU AND THEN POP UPS FOR IT , IT ALSO MAKE MENU DROP DOWN MENU, menu-open , caret up or down*/
@@ -144,7 +116,7 @@ body {
 #introd {
 	margin-left: 0px;
 	width: 100%;
-	height: 80px;
+	height: 90px;
 	background-color: rgba(231, 100, 12, 0.888);
 	display: flex;
 	flex-direction: column;
@@ -164,7 +136,8 @@ body {
     gap: 10px; /* Space between the input and the button */
     margin: 20px auto; /* Center the container */
     padding: 10px;
-    max-width: 500px; /* Restrict the width of the container */
+	
+    max-width: 400px; /* Restrict the width of the container */
 }
 
 .search-bar {  
@@ -173,6 +146,7 @@ body {
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 8px;
+	height: 60px;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
     outline: none;
 }

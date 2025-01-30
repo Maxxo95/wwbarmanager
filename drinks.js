@@ -42,8 +42,8 @@ function renderCocktail(cocktail) {
     // Build the video file names dynamically
     const glassVideo = `${videoBasePath}${cocktail["GlassType"]}.mp4`;
     const iceVideo = `${videoBasePath}${cocktail["Ice"]}.mp4`;
-    const garnishVideo = `${videoBasePath}${cocktail["Garnish"]}.mp4`;
-    const techniqueVideo = `${videoBasePath}${cocktail["CocktailName"]}.mp4`;
+  
+    const techniqueVideo = `${videoBasePath}${cocktail["Technique"]}.mp4`;
 
     // Constructing the HTML dynamically
     const drinkHTML = `
@@ -107,13 +107,7 @@ function renderCocktail(cocktail) {
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                    <div class="video-container">
-                        <h3>Garnish</h3>
-                        <video controls>
-                             <source src="video/${garnishVideo}" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
+                   
                 </div>
             </div>
         </div>

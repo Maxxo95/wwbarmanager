@@ -1,3 +1,4 @@
+
 // Path to your CSV file
 const csvFilePath = "modified_cocktail_recipes.csv"; // Ensure this is correct
 const recipeContainer = document.getElementById("content");
@@ -99,3 +100,70 @@ searchButton.addEventListener("click", () => {
   const query = document.getElementById("searchBar").value; // Get the user's input
   filterCocktails(query); // Filter and update the cocktails list
 });
+
+/// Menu 
+const dropdowns = document.querySelectorAll('.dropdown');
+/*ARROW FUNCTION IN CASE OF MORE DROPDOWN MENUS*/
+dropdowns.forEach((dropdown) => {
+    const cover = dropdown.querySelector('.cover');
+    const caret = dropdown.querySelector('.caret');
+    const menu = dropdown.querySelector('.menu');
+    const options = menu.querySelectorAll('.option');
+    /*withn this function another function to evenlisent click in the cover section*/
+    cover.addEventListener('click', () => {
+        caret.classList.toggle('caret-rotate');  /*IF CLICK IT WILL TOGGLE WITH THE PREVIOUS CSS CREATED TWO OPTION OPEN OR CLOSE HIDDE/ ENN*/
+        menu.classList.toggle('menu-open');   /*same diferent version of menu open and close*/
+    });
+    /*HERE THE VARIABLES CARE & MENU HAVE TWO STATES ON & OFF WE COULD SAY BUT WE NEED TO MANAGE THEM*/
+    /*function basing on menu full content versions, */
+    /*for each option function, */
+    options.forEach((option) => {
+        option.addEventListener('click', () => {
+            caret.classList.remove('caret-rotate'); /*if click removes this option from the html caret variable and lets caret */
+            menu.classList.remove('menu-open'); /*removes menu with click */
+
+            options.forEach((option) => { /*finally will loop on the clicks removing and adding */
+                option.classList.remove('active');
+            });
+            option.classList.add('active');
+        });
+    });
+});
+
+
+/*pop up function of support button*/
+function togglePopup() {
+    var popup = document.getElementById("popup");
+    if (popup.style.display === "none") {
+        popup.style.display = "block";
+    } else {
+        popup.style.display = "none";
+    }
+}
+
+
+function togglePopup1() {
+    var popup = document.getElementById("loginpop");
+    if (popup.style.display === "none") {
+        popup.style.display = "block";
+    } else {
+        popup.style.display = "none";
+    }
+}
+
+document.getElementById("loginForm").addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent form submission
+
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+
+    // Check if the provided credentials match the expected values
+    if (username === "username" && password === "password") {
+        alert("Login successful!");
+
+    } else {
+        alert("Invalid credentials");
+    }
+});
+
+
