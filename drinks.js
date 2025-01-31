@@ -36,13 +36,13 @@ function renderCocktail(cocktail) {
 
     // Generate the HTML layout for the cocktail
 
-  
+
     const videoBasePath = "/";
 
     // Build the video file names dynamically
     const glassVideo = `${videoBasePath}${cocktail["GlassType"]}.mp4`;
     const iceVideo = `${videoBasePath}${cocktail["Ice"]}.mp4`;
-  
+
     const techniqueVideo = `${videoBasePath}${cocktail["Technique"]}.mp4`;
 
     // Constructing the HTML dynamically
@@ -58,27 +58,31 @@ function renderCocktail(cocktail) {
                      <img class="logo" src="images/${cocktail["CocktailName"]}.jpg" alt="${cocktail["CocktailName"]}">
                 </div>
 
-                <!-- Details Section -->
-                <div class="details-section">
-                    <div class="ingredients-section">
-                        <h2>Ingredients</h2>
-                        <ul>${ingredientsList}</ul>
-                    </div>
-                    <div class="extra-details">
-                        <div class="detail-box">
-                            <h3>Glass Type</h3>
-                            <p>${cocktail["GlassType"]}</p>
-                        </div>
-                        <div class="detail-box">
-                            <h3>Type of Ice</h3>
-                            <p>${cocktail["Ice"]}</p>
-                        </div>
-                        <div class="detail-box">
-                            <h3>Garnish</h3>
-                            <p>${cocktail["Garnish"]}</p>
-                        </div>
-                    </div>
-                </div>
+               <!-- Details Section -->
+<div class="details-section">
+    <div class="ingredients-section">
+        <h2>Ingredients</h2>
+        <ul>${ingredientsList}</ul>
+    </div>
+    <div class="image-section2">
+        <img src="jiggerbig.jpg" alt="Jigger" />
+    </div>
+    <div class="extra-details">
+        <div class="detail-box">
+            <h3>Glass Type</h3>
+            <p>${cocktail["GlassType"]}</p>
+        </div>
+        <div class="detail-box">
+            <h3>Type of Ice</h3>
+            <p>${cocktail["Ice"]}</p>
+        </div>
+        <div class="detail-box">
+            <h3>Garnish</h3>
+            <p>${cocktail["Garnish"]}</p>
+        </div>
+    </div>
+</div>
+
             </div>
 
             <!-- Bottom Layout -->
